@@ -10,3 +10,42 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+/* .cart-container{
+
+} */
+
+
+
+/* Mobile responsive  */
+@media screen and (max-width:576px) {
+
+    .home-container {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+
+    .cart-container {
+        width: 75vw;
+
+        position: relative;
+        margin: 40px auto;
+        left: 1%;
+    }
+
+    .food-container {
+        /* margin: 50px; */
+        grid-template-columns: repeat(1, 1fr);
+        order: 2;
+        grid-gap: 45px;
+        /* width: 80vw; */
+        /* margin: 50px auto; */
+        width: 70vw;
+        /* text-align: center; */
+    }
+
+    .search-btn{
+        width: 50px;
+    }
+
+}

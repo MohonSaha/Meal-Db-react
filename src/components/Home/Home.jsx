@@ -24,12 +24,7 @@ const Home = () => {
     }
 
 
-    useEffect(() => {
-        fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=fish')
-            .then(res => res.json())
-            .then(data => setFoods(data.meals))
-    }, [])
-
+ 
 
     useEffect(() => {
         const url = (`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`);
@@ -39,13 +34,21 @@ const Home = () => {
     }, [button])
 
 
+    useEffect(() => {
+        fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=fish')
+            .then(res => res.json())
+            .then(data => setFoods(data.meals))
+            .catch(err=> console.log(err))
+    }, [])
+
+
     return (
         <div>
 
             <div className='search-bar mt-4 flex items-center justify-center '>
                 <div className="form-control">
                     <div className="input-group">
-                        <input value={text} onFocus={searchClear} onChange={handleOnChnage} placeholder="Search your food here..." type="text" className="py-2 px-3 rounded-md w-[600px]" />
+                        <input value={text} onFocus={searchClear} onChange={handleOnChnage} placeholder="Search your food here..." type="text" className="py-2 px-3 rounded-md md:w-[600px] w-[300px] search-btn" />
                         <button onClick={handleSearchClick} className="btn btn-square">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </button>
@@ -58,10 +61,14 @@ const Home = () => {
             <div className='home-container'>
                 <div className='food-container'>
                     {
-                        foods.map(food => <Food food={food}></Food>)
+                        foods?.map(food => <Food 
+                            key={food.idMeal}
+                            food={food}></Food>)
                     }
                 </div>
-                <div></div>
+                <div className='cart-container'>
+
+                </div>
             </div>
 
 
