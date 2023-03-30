@@ -1,0 +1,12 @@
+.home-container{
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    padding: 0px 40px;
+}
+
+.food-container{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
